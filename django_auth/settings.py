@@ -125,3 +125,19 @@ STATIC_URL = '/static/'
 #other setting
 AUTH_USER_MODEL = 'users.User'
 
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+
+
+
+
+
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'users.backends.EmailBackend',
+)
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

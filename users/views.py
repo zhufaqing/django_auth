@@ -7,6 +7,7 @@ def index(request):
 
 
 def register(request):
+	redirect_to = request.POST.get('next', request.GET.get('next', ''))
 	if request.method == "POST":
 		form = RegisterForm(request.POST)
 		if form.is_valid():
@@ -15,4 +16,6 @@ def register(request):
 	else:
 		form = RegisterForm()
 			
-	return render(request,'users/register.html',context={'form':form})
+	# return render(request,'users/register.html',context={'form':form})
+	
+	return render(request, 'users/register.html', context={'form': form, 'next': redirect_to})
